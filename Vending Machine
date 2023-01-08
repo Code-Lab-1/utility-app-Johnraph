@@ -1,0 +1,45 @@
+# Welcome message
+print('Welcome to the JC-Sports vending machine!')
+
+# Set up the vending machine items and prices
+items = ['mai dubai', 'coca-cola', 'mountain dew', 'pepsi', "gatorade", "red bull", "C4", "twix", "snickers", "doritos", "cheetos"]
+prices = [ 2, 3, 3, 3, 6, 10, 15, 4, 5, 1.50, 1.50]
+
+
+# Main loop
+while True:
+  # Display menu
+  print('Please pick any item you want:')
+  for i in range(len(items)):
+    print(f'{i+1}: {items[i]} ({prices[i]} aed)')
+  print('0: Exit')
+  
+  # Get user's selection
+  selection = int(input('Enter your selection: '))
+  if selection == 0:
+    break
+  elif selection > len(items):
+    print('Invalid selection, please try again.')
+  else:
+    # Get the price of the selected item
+    price = prices[selection-1]
+    
+    # Get the amount of money entered
+    money = int(input('Enter the amount of money you are inserting (in aed): '))
+    
+    # Check if the user has entered enough money
+    if money < price:
+      print('Not enough money, please insert more.')
+    else:
+      # Calculate the change
+      change = money - price
+      
+      # Dispense the item
+      print(f'Dispensing item: {items[selection-1]}')
+      
+      # Give the change, if any
+      if change > 0:
+        print(f'Your change is {change} aed.')
+      
+# Exit message
+print('Thank you for using the JC-Sports vending machine!')
